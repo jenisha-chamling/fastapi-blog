@@ -1,0 +1,62 @@
+
+{% extends "layout.html" %}
+
+{% block content %}
+  <h1>Create a post</h1>
+  <p>Write a new blog post. Fields marked with <span class="text-danger">*</span> are required.</p>
+
+  {% if errors.get('form') %}
+    <p class="error">{{ errors['form'] }}</p>
+  {% endif %}
+
+  <form action="{{ url_for('create_webpost') }}" method="post">
+    <label for="author">
+      Author <span class="required-mark" aria-hidden="true">*</span>
+    </label>
+    <input
+      id="author"
+      name="author"
+      type="text"
+      maxlength="80"
+      required
+      value="{{ form_data.get('author', '') }}"
+      aria-required="true"
+    >
+    {% if errors.get('author') %}
+      <p class="error">{{ errors['author'] }}</p>
+    {% endif %}
+
+    <label for="title">
+      Title <span class="required-mark" aria-hidden="true">*</span>
+    </label>
+    <input
+      id="title"
+      name="title"
+      type="text"
+      maxlength="160"
+      required
+      value="{{ form_data.get('title', '') }}"
+      aria-required="true"
+    >
+    {% if errors.get('title') %}
+      <p class="error">{{ errors['title'] }}</p>
+    {% endif %}
+
+    <label for="content">
+      Content <span class="required-mark" aria-hidden="true">*</span>
+    </label>
+    <textarea
+      id="content"
+      name="content"
+      maxlength="10000"
+      required
+      aria-required="true"
+    >{{ form_data.get('content', '') }}</textarea>
+    {% if errors.get('content') %}
+      <p class="error">{{ errors['content'] }}</p>
+    {% endif %}
+
+    <button type="submit">Publish post</button>
+    <a href="{{ url_for('home') }}">Cancel</a>
+  </form>
+{% endblock content %}

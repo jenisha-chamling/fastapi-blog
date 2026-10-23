@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% if title %}FastAPI Blog - {{ title }}{% else %}FastAPI Blog{% endif %}</title>
+  <style>
+    body { max-width: 760px; margin: 2rem auto; padding: 0 1rem; font-family: Arial, sans-serif; line-height: 1.6; color: #222; }
+    header { border-bottom: 1px solid #ddd; margin-bottom: 2rem; padding-bottom: 1rem; }
+    a { color: #1459a6; }
+    article { border-bottom: 1px solid #e5e5e5; padding: 0.5rem 0 1rem; }
+    .meta { color: #666; font-size: 0.9rem; }
+    nav { display: flex; gap: 1rem; align-items: center; }
+    nav a { text-decoration: none; }
+    label { display: block; margin-top: 1rem; font-weight: 600; }
+    input, textarea { box-sizing: border-box; width: 100%; padding: 0.65rem; margin-top: 0.35rem; font: inherit; border: 1px solid #bbb; border-radius: 4px; }
+    textarea { min-height: 180px; resize: vertical; }
+    button { margin-top: 1rem; padding: 0.65rem 1rem; font: inherit; cursor: pointer; }
+    .error { color: #b00020; font-size: 0.9rem; }
+    .required-mark {
+    color: #dc3545;
+}
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="{{ url_for('home') }}"><strong>Blog</strong></a>
+      <a href="{{ url_for('home') }}">All posts</a>
+      <a href="{{ url_for('new_post_page') }}">Create post</a>
+    </nav>
+  </header>
+  <main>{% block content %}{% endblock content %}</main>
+</body>
+</html>

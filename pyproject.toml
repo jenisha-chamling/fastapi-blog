@@ -1,0 +1,19 @@
+[project]
+name = "fastapi-blog"
+version = "0.2.0"
+description = "A small blog application with HTML pages, a JSON API, SQLite persistence, and automated tests."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi[standard]>=0.115.0",
+    "python-multipart>=0.0.20",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0.0",
+]
+
+[build-system]
+requires = ["uv_build>=0.12.1,<0.13.0"]
+build-backend = "uv_build"
